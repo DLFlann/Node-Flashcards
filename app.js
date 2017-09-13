@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+let hostname = '127.0.0.1';
+let port = process.env.PORT || 8000;
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use('/static', express.static('public'));
@@ -28,6 +31,6 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
-app.listen(8000, () => {
-    console.log('The application is running at 127.0.0.1, port 8000');
+app.listen(port, () => {
+    console.log(`The application is running at ${hostname}, port ${port}`);
 });
